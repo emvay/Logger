@@ -1,8 +1,11 @@
+using LG.BUSINESS;
+using LG.BUSINESS.Logger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace LG.API
@@ -21,15 +24,21 @@ namespace LG.API
         {
 
             services.AddControllers();
+
+            services.AddScoped<IProductBusiness, ProductBusiness>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddProvider(new FileLogProvider());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

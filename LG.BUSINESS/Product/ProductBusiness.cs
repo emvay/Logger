@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LG.BUSINESS
 {
-    public class ProductBusiness
+    public class ProductBusiness : IProductBusiness
     {
         public List<Product> GetAllProducts()
         {
