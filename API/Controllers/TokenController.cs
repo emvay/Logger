@@ -28,18 +28,14 @@ namespace LG.API.Controllers
         [HttpPost(nameof(AccessToken))]
         public object AccessToken([FromBody] UserLogin userLogin)
         {
-            UserLogin user = new UserLogin() { Email = "emvay@my.com", Password = "123" };
+            UserLogin user = new UserLogin() { Email = "Test", Password = "123" };
             IActionResult response = Unauthorized();
                 
             if (user.Email == userLogin.Email && user.Password == userLogin.Password)
             {
-                TokenHandler tokenHandler = new TokenHandler(_configuration);
+                TokenHandler tokenHandler = new(_configuration);
                 var tokenString = tokenHandler.CreateAccessToken(userLogin);
                 response = Ok(new { Token = tokenString, Message = "Success" });
-                ////Token üretiliyor.
-                //TokenHandler tokenHandler = new TokenHandler(_configuration);
-
-                //Token token = tokenHandler.CreateAccessToken();
 
                 #region Save Log
                 var controllerName = ControllerContext.ActionDescriptor.ControllerName;

@@ -39,7 +39,7 @@ namespace LG.API
                 swagger.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "JWT Token Authentication API",
+                    Title = "LOGGER API",
                     Description = "ASP.NET Core 5 Web API"
                 });
                 // To Enable authorization using Swagger (JWT)  
