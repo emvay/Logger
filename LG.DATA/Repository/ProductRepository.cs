@@ -1,5 +1,4 @@
-﻿using LG.DOMAIN.Interface;
-using LG.DOMAIN.Model;
+﻿using LG.DOMAIN.Model;
 using System.Collections.Generic;
 using System.Linq;
 

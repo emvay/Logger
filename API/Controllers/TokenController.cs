@@ -33,7 +33,7 @@ namespace LG.API.Controllers
                 
             if (user.Email == userLogin.Email && user.Password == userLogin.Password)
             {
-                TokenHandler tokenHandler = new TokenHandler(_configuration);
+                TokenHandler tokenHandler = new(_configuration);
                 var tokenString = tokenHandler.CreateAccessToken(userLogin);
                 response = Ok(new { Token = tokenString, Message = "Success" });
 
