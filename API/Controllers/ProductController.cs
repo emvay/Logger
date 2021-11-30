@@ -1,15 +1,14 @@
 ﻿using LG.BUSINESS;
-using LG.BUSINESS.Common;
 using LG.DOMAIN.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
 
 namespace LG.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -21,6 +20,7 @@ namespace LG.API.Controllers
             this._logger = logger;
             this._productBusiness = productBusiness;
         }
+
 
         [HttpGet]
         public ActionResult<IEnumerable<Product>> GetAllProducts()
@@ -40,7 +40,7 @@ namespace LG.API.Controllers
         }
         
         [HttpPost]
-        public ActionResult<Product> GetProductById(int id)
+        public ActionResult<Product> GetProductById([FromBody] int id)
         {
             var response = _productBusiness.GetProductById(id);
 

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LG.DATA.Repository
 {
-    public class ProductRepository : IProduct
+    public class ProductRepository
     {
         readonly List<Product> Products = new()
         {
