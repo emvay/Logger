@@ -30,16 +30,14 @@ namespace LG.API
             services.AddScoped<IProductBusiness, ProductBusiness>();
 
             services.AddControllers();
-            // JWT Token Generation from Server Side.  
             services.AddMvc();
             // Enable Swagger   
             services.AddSwaggerGen(swagger =>
             {
-                //This is to generate the Default UI of Swagger Documentation  
                 swagger.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "JWT Token Authentication API",
+                    Title = "Basit Logger API Denemesi",
                     Description = "ASP.NET Core 5 Web API"
                 });
                 // To Enable authorization using Swagger (JWT)  

@@ -26,9 +26,9 @@ namespace LG.API.Controllers
 
         [AllowAnonymous]
         [HttpPost(nameof(AccessToken))]
-        public object AccessToken([FromBody] UserLogin userLogin)
+        public IActionResult AccessToken([FromBody] UserLogin userLogin)
         {
-            UserLogin user = new UserLogin() { Email = "emvay@my.com", Password = "123" };
+            UserLogin user = new UserLogin() { Email = "test", Password = "123" };
             IActionResult response = Unauthorized();
                 
             if (user.Email == userLogin.Email && user.Password == userLogin.Password)
@@ -36,10 +36,6 @@ namespace LG.API.Controllers
                 TokenHandler tokenHandler = new TokenHandler(_configuration);
                 var tokenString = tokenHandler.CreateAccessToken(userLogin);
                 response = Ok(new { Token = tokenString, Message = "Success" });
-                ////Token üretiliyor.
-                //TokenHandler tokenHandler = new TokenHandler(_configuration);
-
-                //Token token = tokenHandler.CreateAccessToken();
 
                 #region Save Log
                 var controllerName = ControllerContext.ActionDescriptor.ControllerName;
